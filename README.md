@@ -1,3 +1,3 @@
 # springboot
 my springboot
-从这里出发, 往更好的方向出发~
+使用springboot学习、实践、应用
