@@ -1,13 +1,12 @@
 package com.lsg;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author lsg
@@ -15,15 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2018/7/19
  * @since 1.0
  */
+@Slf4j
 @SpringBootApplication
+@ServletComponentScan
 @EnableTransactionManagement
-public class Application extends SpringBootServletInitializer{
+public class Application implements ApplicationRunner {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
 
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder applicationBuilder) {
-        return applicationBuilder.sources(Application.class);
+    @Override
+    public void run(ApplicationArguments applicationArguments) throws Exception {
+        log.info("项目已启动");
     }
 }
